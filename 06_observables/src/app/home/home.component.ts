@@ -21,7 +21,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     /*** Observable example 1 ***/
     // Setup Observable to send an incremental number every 1000ms
-    const myNumbers = Observable.interval(1000);
+    const myNumbers = Observable.interval(1000)
+        // map() is an example of an opertor we can use on observables
+            .map(
+                (data: number) => {
+                  return data * 2;
+                }
+            );
 
     // Subscribe to Observable. Now check the console.
     this.observableExampleOneSubscription = myNumbers.subscribe(
