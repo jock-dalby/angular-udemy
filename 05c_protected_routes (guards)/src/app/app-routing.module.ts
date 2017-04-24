@@ -10,6 +10,7 @@ import { ServerComponent } from './servers/server/server.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 
 const appRoutes: Routes = [
     // By default, Angular matches paths by prefix. That means, that the following route will match any route that begins with '/' (i.e. all routes). By adding pathMatch you only get redirected, if the full path is ''  (so only if you got NO other content in your path).
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
         component: ServersComponent,
         children: [
             {path: ':id', component: ServerComponent},
-            {path: ':id/edit', component: EditServerComponent}
+            {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard]}
             ]
     },
     {path: 'not-found',

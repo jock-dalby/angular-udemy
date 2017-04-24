@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
         private router: Router
     ) {}
 
-    // canActivate will either return an Observable which will resolve to a boolean, a Promise that will resolve to a boolean, or just a boolean.
+    // canActivate and canActivateChild will either return an Observable which will resolve to a boolean, a Promise that will resolve to a boolean, or just a boolean.
 
     canActivate(
         route: ActivatedRouteSnapshot,
