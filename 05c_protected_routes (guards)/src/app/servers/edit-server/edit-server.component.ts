@@ -54,6 +54,8 @@ export class EditServerComponent implements OnInit, CanComponentDeactivate {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
+  // canDeactivate is a built in router method but if we want to implement it to be called every time we try to leave a route we have to create a version in a service of our own and then define our conditions within it. See can-deactivate-guard-service.
+
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
       if (!this.allowEdit) {
           return true;
