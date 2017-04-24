@@ -1,0 +1,23 @@
+<div class="container">
+  <!-- Listen custom event 'serverCreated' and emit 'onServerAdded' method. $event will bind the event data and pass to the onServerAdded method -->
+  <app-cockpit
+          (serverCreated)="onServerAdded($event)"
+          (blueprintCreated)="onBlueprintAdded($event)">
+  </app-cockpit>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Loop through serverElements, and on each iteration assign serverElement to the element property -->
+      <app-server-element
+              *ngFor="let serverElement of serverElements"
+              [element]="serverElement">
+        <p>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+
+        </p>
+      </app-server-element>
+    </div>
+  </div>
+</div>

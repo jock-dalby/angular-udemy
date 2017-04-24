@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{ element.name }}</div>
+  <div class="panel-body">
+    <!-- Without ng-content, everything you place between the opening and closing tags when calling this component is not included in the DOM. Although <ng-content> looks like a component, it is a directive and when placed in the template it asks a s a hook to mark where the content between the tags will be projected into the component.  -->
+    <ng-content></ng-content>
+
+    <!-- Code projected in by ng-content that used to be contained in this component. Here for reference purposes
+    <p>
+      <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+      <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+    </p>
+    -->
+  </div>
+</div>

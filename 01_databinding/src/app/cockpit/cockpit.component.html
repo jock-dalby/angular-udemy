@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p>Add new Servers or blueprints!</p>
+    <label>Server Name</label>
+    <!-- USE 2 WAY BINDING -->
+      <!--<input type="text" class="form-control" [(ngModel)]="newServerName">-->
+    <!-- USE 2 WAY BINDING -->
+
+    <!-- Because we only want the serverName value at the time we press the 'Add server' button, we do not need to use two-way data-binding. It will be enough to get the value of the input at the moment the button is pressed, using local references. A local reference can be placed on ANY HTML element using #<name>. IMPORTANT => The reference will hold a reference to the element (not the value) and is ONLY ACCESSIBLE INSIDE THE TEMPLATE, NOT IN THE COMPONENT!-->
+
+    <!-- USE LOCAL REFERENCE -->
+      <input
+              type="text"
+              class="form-control"
+              #serverNameInput>
+      <label>Server Content</label>
+      <input type="text" class="form-control" #serverContentInput>
+      <br>
+    <!-- USE LOCAL REFERENCE -->
+
+    <!-- USE 2 WAY BINDING -->
+      <!--<button-->
+              <!--class="btn btn-primary"-->
+              <!--(click)="onAddServer()">Add Server</button>-->
+    <!-- USE 2 WAY BINDING -->
+
+    <!-- USE LOCAL REFERENCE -->
+      <button
+              class="btn btn-primary"
+              (click)="onAddServer(serverNameInput)">Add Server</button>
+    <!-- USE LOCAL REFERENCE -->
+    <button
+            class="btn btn-primary"
+            (click)="onAddBlueprint(serverNameInput)">Add Server Blueprint</button>
+  </div>
+</div>

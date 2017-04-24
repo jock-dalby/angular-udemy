@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Bind it!</h3>
+      <ol>
+        <li style="text-decoration:line-through;">Create three new components: GameControl, Odd and Even</li>
+        <li style="text-decoration:line-through;">The GameControl Component should have buttons to start and stop the game</li>
+        <li style="text-decoration:line-through;">When starting the game, an event (holding a incrementing number) should get emitted each second (ref = setInterval())</li>
+        <li style="text-decoration:line-through;">The event should be listenable from outside the component</li>
+        <li style="text-decoration:line-through;">When stopping the game, no more events should get emitted (clearInterval(ref))</li>
+        <li>A new Odd component should get created for every odd number emitted, the same should happen for the Even Component (on even numbers)</li>
+        <li style="text-decoration:line-through;">Simply output Odd - NUMBER or Even - NUMBER in the two components</li>
+        <li style="text-decoration:line-through;">Style the element (e.g. paragraph) holding your output text differently in both components</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-game-control (newNumber)="handleNewNumber($event)" (gameStopped)="handleGameStopped()"></app-game-control>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <app-even *ngFor="let even of evenNumbers" [even]="even"></app-even>
+    </div>
+
+    <div class="col-xs-6">
+      <app-odd *ngFor="let odd of oddNumbers" [odd]="odd"></app-odd>
+    </div>
+  </div>
+</div>
