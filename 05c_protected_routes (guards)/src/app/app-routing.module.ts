@@ -12,6 +12,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 
 import { AuthGuard } from './auth-guard.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
+import { ServerResolver } from './servers/server/server-resolver.service';
+
 
 const appRoutes: Routes = [
     // By default, Angular matches paths by prefix. That means, that the following route will match any route that begins with '/' (i.e. all routes). By adding pathMatch you only get redirected, if the full path is ''  (so only if you got NO other content in your path).
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
 
         component: ServersComponent,
         children: [
-            {path: ':id', component: ServerComponent},
+            {path: ':id', component: ServerComponent, resolve: {server: ServerResolver}},
+            // resolve will now map the data we receive back from ServerResolver and store it in the server property we will have available in this to-be loaded component. See ServerComponent.ts
             {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactivateGuard]}
             ]
     },

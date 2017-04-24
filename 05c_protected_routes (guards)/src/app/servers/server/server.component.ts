@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, Data } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -18,15 +18,27 @@ export class ServerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
-    this.server = this.serversService.getServer(+id);
+    // With using resolver => see routes. We are using an observable because data can change while we are on the page and we want it to automatically update
 
-    this.route.params
+    this.route.data
         .subscribe(
-            (params: Params) => {
-              this.server = this.serversService.getServer(+params['id']);
+            (data: Data) => {
+              this.server = data['server'];
+              // must match the property name from where called resolve in routes.
             }
         );
+
+    // Without using resolver
+
+    // const id = this.route.snapshot.params['id'];
+    // this.server = this.serversService.getServer(+id);
+    //
+    // this.route.params
+    //     .subscribe(
+    //         (params: Params) => {
+    //           this.server = this.serversService.getServer(+params['id']);
+    //         }
+    //     );
   }
 
   onEditServer(id: number) {
