@@ -64,7 +64,7 @@ const appRoutes: Routes = [
 @NgModule({
     imports: [
         // import RouterModule and configure it.
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, {useHash: true}) // If your app will not work in production mode, add {useHash: true}. useHash will # before all routes. In production, this will inform the web server hosting my app to only take notice of the part of the url before the hash, ignore anything afterwards. Without this the web server will try to find a path for all routes, which it will not have. The only route the web server has is to index.html and then all routing is handled on the client-side. This will stop your app from hitting 404 errors
     ],
     // export RouterModule for use in other files.
     exports: [RouterModule]
