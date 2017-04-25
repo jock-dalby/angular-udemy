@@ -59,6 +59,9 @@ export class AppComponent {
     this.user.gender = this.signupForm.value.gender;
 
     this.submitted = true;
+
+    // Reset all values in signupForm
+    this.signupForm.reset();
   }
 
 // Passing form data only at time of submit. This is fine if you do not need access to data before submission, for validation etc.
