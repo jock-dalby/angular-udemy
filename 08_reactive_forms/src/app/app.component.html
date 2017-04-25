@@ -11,6 +11,8 @@
                     id="username"
                     formControlName="username"
                     class="form-control">
+            <br>
+            <button class="btn btn-primary" type="button" (click)="usernameToJock()">Set username to 'Jock'</button>
             <span
                     class="help-block"
                     *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched"
@@ -37,6 +39,8 @@
             id="username"
             formControlName="username"
             class="form-control">
+          <br>
+          <button class="btn btn-primary" type="button" (click)="usernameToNele()">Set username to 'Nele'</button>
           <span
                   class="help-block"
                   *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched"
