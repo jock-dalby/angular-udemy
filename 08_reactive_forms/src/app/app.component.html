@@ -63,6 +63,22 @@
             >{{ gender }}
           </label>
         </div>
+        <div formArrayName="hobbies">
+          <h4>Hobbies</h4>
+          <div class="form-group" *ngFor="let hobbyControl of signupForm.get('hobbies').controls; let i = index">
+            <div class="row">
+              <div class="col-xs-10">
+                <input type="text" class="form-control" [formControlName]="i">
+              </div>
+              <div class="col-xs-2">
+                <button class="btn btn-danger" type="button" (click)="onDeleteHobby(i)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-success" type="button" (click)="onAddHobby()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+          <!-- IMPORTANT to include type="button" on button so doesn't accidentally submit whole form-->
+        </div>
+        <br>
         <span
                 class="help-block"
                 *ngIf="!signupForm.valid && signupForm.touched"
