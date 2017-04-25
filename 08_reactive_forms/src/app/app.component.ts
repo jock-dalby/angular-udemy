@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +16,14 @@ export class AppComponent implements OnInit{
       // Property names are wrapped in quotations to protect them during minification. This may not be necessary and without them the property names may not get destroyed, but just to be sure, we are wrapping them as strings.
      // We can pass FormControl up to 3 arguments (initialState, single validator/array of validators, potential async validators).
     this.signupForm = new FormGroup({
-      'username': new FormControl(null),
-      'email': new FormControl(null),
+      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
       'gender': new FormControl('male')
 
     });
+  }
+
+  onSubmit() {
+    console.log(this.signupForm);
   }
 }
