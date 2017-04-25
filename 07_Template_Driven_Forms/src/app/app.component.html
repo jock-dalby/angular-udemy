@@ -50,9 +50,11 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="secretAnswer">Answer to secret question</label>
           <textarea
                   class="form-control"
-                  name="questionAnswer"
+                  name="answer"
+                  id="secretAnswer"
                   rows="3"
                   [(ngModel)]="answer"
           ></textarea>
@@ -76,6 +78,17 @@
           Submit
         </button>
       </form>
+      <hr>
+    </div>
+  </div>
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <h3>Your Data</h3>
+      <p>Username: {{ user.name }}</p>
+      <p>Mail: {{ user.email }}</p>
+      <p>Secret Question: {{ user.secret }}</p>
+      <p>Answer: {{ user.answer }}</p>
+      <p>Gender: {{ user.gender }}</p>
     </div>
   </div>
 </div>

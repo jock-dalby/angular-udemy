@@ -11,6 +11,15 @@ export class AppComponent {
   defaultName = "Jock";
   answer = '';
   genders = ['male', 'female'];
+  submitted = false;
+
+  user = {
+    name: '',
+    email: '',
+    secret: '',
+    answer: '',
+    gender: ''
+  }
 
   @ViewChild('f') signupForm: NgForm;
   @ViewChild('userData') userData: FormGroup;
@@ -42,6 +51,14 @@ export class AppComponent {
   onSubmit() {
     console.log(this.signupForm);
     console.log(this.userData);
+
+    this.user.name = this.signupForm.value.userData.name;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.secret = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.answer;
+    this.user.gender = this.signupForm.value.gender;
+
+    this.submitted = true;
   }
 
 // Passing form data only at time of submit. This is fine if you do not need access to data before submission, for validation etc.
