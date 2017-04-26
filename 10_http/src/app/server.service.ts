@@ -80,4 +80,13 @@ export class ServerService {
                 }
             );
     }
+
+    getAppName() {
+        return this.http.get('https://udemy-ng-http-e7c21.firebaseio.com/appName.json')
+            .map(
+                (response: Response) => {
+                    return response.json();
+                }
+            );
+    }
 }

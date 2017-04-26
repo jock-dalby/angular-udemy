@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>{{ appName | async }} <== Get from DB and piped using async. this means we do not need to subscribe to observable and will be automatically formatted on response.</h1>
   <div class="row">
       <h2>DB functions</h2>
       <label for="serverName">New server name</label>
@@ -7,7 +8,7 @@
     <div class="col-xs-6">
       <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button><span> Add servers to local copies NOT SENT TO DB</span>
       <br><br>
-      <button class="btn btn-success" (click)="onAddallServers()">Add all Servers</button><span> Will cause duplicates as sending all local copies using post</span>
+      <button class="btn btn-success" (click)="onAddAllServers()">Add all Servers</button><span> Will cause duplicates as sending all local copies using post</span>
       <br><br>
       <button class="btn btn-success" (click)="onOverwrite()">Overwrite Servers</button><span> Will not cause duplicates as will rewrite remote copies with local copies using put</span>
       <br><br>

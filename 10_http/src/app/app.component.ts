@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
-import {  Response } from '@angular/Http';
+import { Component, Injectable } from '@angular/core';
+import { Response } from '@angular/Http';
 
 import { ServerService } from './server.service';
+
+import 'rxjs/Rx'; // Needed for .map observable operator
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
+
+  appName = this.serverService.getAppName();
+
   servers = [
     {
       name: 'Testserver',
@@ -34,7 +40,7 @@ export class AppComponent {
     });
   }
 
-  onAddallServers(server: any) {
+  onAddAllServers(server: any) {
     this.serverService.storeServers(server)
         // important to subscribe to observable otherwise no request will be sent
         .subscribe(
