@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Http, Headers} from "@angular/http";
+import {Http, Headers, Response} from "@angular/http";
+
+import 'rxjs/Rx'; // Needed for .map observable operator
 
 @Injectable() // Required because injecting th Angular Http service
 
@@ -29,7 +31,18 @@ export class ServerService {
         // 3. This returns an observable, but so long as nothing is subscribed, no request will be sent. We will subscribe in the component where we call this method.
     }
 
-    getServers() {
+    getServersOne() {
        return this.http.get('https://udemy-ng-http-e7c21.firebaseio.com/data.json');
+    }
+
+    getServersTwo() {
+        return this.http.get('https://udemy-ng-http-e7c21.firebaseio.com/data.json')
+        // The map function takes the old observable and maps the data we get back and transforms it and wraps it in a new observable (so we are still returning an observable when called.)
+            .map(
+                (response: Response) => {
+                    const data = response.json()
+                    return data;
+                }
+            );
     }
 }

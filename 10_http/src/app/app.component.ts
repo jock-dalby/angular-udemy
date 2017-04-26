@@ -52,12 +52,24 @@ export class AppComponent {
         );
   }
 
-  onGet() {
-    this.serverService.getServers()
+  // Both onGetOne an onGetTwo give the same result, but by using method two we write less code if multiple components are using the getServers method
+
+  onGetOne() {
+    this.serverService.getServersOne()
         .subscribe(
             (response: Response) => {
              const data = response.json();
              console.log(data);
+            },
+            (error) => console.log(error)
+        );
+  }
+
+  onGetTwo() {
+    this.serverService.getServersTwo()
+        .subscribe(
+            (servers: any[]) => {
+              console.log(servers);
             },
             (error) => console.log(error)
         );
