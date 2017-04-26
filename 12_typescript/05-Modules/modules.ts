@@ -3,6 +3,8 @@
 
 // We export a class, interface, variable, ... by adding 'export' keyword in front of it
 
+// Without the export keyword we can only use this class inside this file.
+
 export class ExportedClass {
     // This class is exported
 }
