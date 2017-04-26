@@ -5,6 +5,9 @@
       <input type="text" id="filter" [(ngModel)]="filteredStatus" class="form-control">
       <br>
       <button class="btn btn-primary" (click)="onAddServer()">Add new server</button>
+      <br>
+      <br>
+      <h2>{{appStatus | async}}</h2>
     </div>
   </div>
   <hr>

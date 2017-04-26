@@ -11,6 +11,12 @@ export class AppComponent {
 
   filteredStatus = '';
 
+  appStatus = new Promise((resolve, reject) => {
+    const promise = setTimeout(() => {
+      resolve('==> Async pipe resolving stable');
+    }, 2000);
+  });
+
   servers = [
     {
       instanceType: 'medium',
