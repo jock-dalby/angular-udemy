@@ -4,7 +4,9 @@
       <input type="text" #serverName>
       <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>
       <br><br>
-      <button class="btn btn-success" (click)="onSave()">Save Servers</button>
+      <h2>DB functions</h2>
+      <button class="btn btn-success" (click)="onAdd()">Add Servers</button>
+      <button class="btn btn-success" (click)="onOverwrite()">Overwrite Servers</button>
       <button class="btn btn-success" (click)="onGet()">Get Servers</button>
       <hr>
       <ul class="list-group" *ngFor="let server of servers">

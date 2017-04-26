@@ -34,9 +34,18 @@ export class AppComponent {
     });
   }
 
-  onSave() {
+  onAdd() {
     this.serverService.storeServers(this.servers)
         // important to subscribe to observable otherwise no request will be sent
+        .subscribe(
+            (response) => console.log(response),
+            (error) => console.log(error)
+        );
+  }
+
+  onOverwrite() {
+    this.serverService.overwrtieServers(this.servers)
+    // important to subscribe to observable otherwise no request will be sent
         .subscribe(
             (response) => console.log(response),
             (error) => console.log(error)
