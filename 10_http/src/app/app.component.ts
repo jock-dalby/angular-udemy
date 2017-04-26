@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import {ServerService} from "./server.service";
+import {  Response } from '@angular/Http';
+
+import { ServerService } from './server.service';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +39,17 @@ export class AppComponent {
         // important to subscribe to observable otherwise no request will be sent
         .subscribe(
             (response) => console.log(response),
+            (error) => console.log(error)
+        );
+  }
+
+  onGet() {
+    this.serverService.getServers()
+        .subscribe(
+            (response: Response) => {
+             const data = response.json();
+             console.log(data);
+            },
             (error) => console.log(error)
         );
   }
