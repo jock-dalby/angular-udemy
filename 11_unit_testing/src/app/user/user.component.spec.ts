@@ -5,6 +5,8 @@ import { UserComponent } from './user.component';
 import { UserService } from "./user.service";
 import { DataService } from "../shared/data.service";
 
+/**** See app.component.html for more infor on testing ****/
+
 describe('Component: User', () => {
   // Declare the module for testing by calling beforeEach and passing it a callback. Testbed is the main testing object that gives us access to all different methods.
   beforeEach(() => {
