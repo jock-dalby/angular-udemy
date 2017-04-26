@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ShortenPipe } from "./shorten.pipe";
+import { ShortenWithParamsPipe } from "./shortenWithParams.pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShortenPipe
+    ShortenPipe,
+    ShortenWithParamsPipe
   ],
   imports: [
     BrowserModule,
