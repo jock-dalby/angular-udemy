@@ -1,13 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 example">
-      <input type="text" [(ngModel)]="filteredStatus">
+      <label for="filter">Search servers by name</label>
+      <input type="text" id="filter" [(ngModel)]="filteredStatus" class="form-control">
+      <br>
+      <button class="btn btn-primary" (click)="onAddServer()">Add new server</button>
     </div>
+  </div>
+  <hr>
+  <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h4>All servers</h4>
       <ul class="list-group">
         <li
           class="list-group-item"
-          *ngFor="let server of servers | filter:filteredStatus:'status'"
+          *ngFor="let server of servers | filter:filteredStatus:'name'"
           [ngClass]="getStatusClasses(server)">
           <span
             class="badge">
