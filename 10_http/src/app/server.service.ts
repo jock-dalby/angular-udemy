@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Http, Headers, Response} from "@angular/http";
 
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx'; // Needed for .map observable operator
 
 @Injectable() // Required because injecting th Angular Http service
@@ -32,7 +33,13 @@ export class ServerService {
     }
 
     getServersOne() {
-       return this.http.get('https://udemy-ng-http-e7c21.firebaseio.com/data.json');
+       return this.http.get('https://udemy-ng-http-e7c21.firebaseio.com/data.json')
+           .catch(
+               (error: Response) => {
+                   console.log(error);
+                   return Observable.throw(error);
+               }
+               );
     }
 
     getServersTwo() {
@@ -40,8 +47,36 @@ export class ServerService {
         // The map function takes the old observable and maps the data we get back and transforms it and wraps it in a new observable (so we are still returning an observable when called.)
             .map(
                 (response: Response) => {
-                    const data = response.json()
+                    const data = response.json();
                     return data;
+                }
+            )
+            .catch(
+                (error: Response) => {
+                    console.log(error);
+                    return Observable.throw(error);
+                }
+            );
+    }
+
+    // Use overwrite before testing so comes back without array values
+    getServersThree() {
+        return this.http.get('https://udemy-ng-http-e7c21.firebaseio.com/data.json')
+            .map(
+                (response: Response) => {
+                    const data = response.json();
+                    console.log('DATA 1', data);
+                    for (const server of data) {
+                        server.name = 'FETCHED_' + server.name;
+                    }
+                    console.log('DATA 2', data);
+                    return data;
+                }
+            )
+            .catch(
+                (error: Response) => {
+                    console.log(error);
+                    return Observable.throw('Something went wrong');
                 }
             );
     }

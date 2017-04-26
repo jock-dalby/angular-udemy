@@ -34,8 +34,8 @@ export class AppComponent {
     });
   }
 
-  onAdd() {
-    this.serverService.storeServers(this.servers)
+  onAddallServers(server: any) {
+    this.serverService.storeServers(server)
         // important to subscribe to observable otherwise no request will be sent
         .subscribe(
             (response) => console.log(response),
@@ -71,6 +71,15 @@ export class AppComponent {
             (servers: any[]) => {
               console.log(servers);
             },
+            (error) => console.log(error)
+        );
+  }
+
+  // Use overwrite before testing so comes back without array values
+  onGetThree() {
+    this.serverService.getServersThree()
+        .subscribe(
+            (servers: any[]) => this.servers = servers,
             (error) => console.log(error)
         );
   }

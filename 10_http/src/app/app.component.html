@@ -1,15 +1,23 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <input type="text" #serverName>
-      <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button>
-      <br><br>
       <h2>DB functions</h2>
-      <button class="btn btn-success" (click)="onAdd()">Add Servers</button>
-      <button class="btn btn-success" (click)="onOverwrite()">Overwrite Servers</button>
+      <label for="serverName">New server name</label>
+      <input type="text" id="serverName" class="form-control" #serverName>
+      <br><br>
+    <div class="col-xs-6">
+      <button class="btn btn-primary" (click)="onAddServer(serverName.value)">Add Server</button><span> Add servers to local copies NOT SENT TO DB</span>
+      <br><br>
+      <button class="btn btn-success" (click)="onAddallServers()">Add all Servers</button><span> Will cause duplicates as sending all local copies using post</span>
+      <br><br>
+      <button class="btn btn-success" (click)="onOverwrite()">Overwrite Servers</button><span> Will not cause duplicates as will rewrite remote copies with local copies using put</span>
+      <br><br>
       <button class="btn btn-success" (click)="onGetOne()">Get Servers (subscribe in component)</button>
+      <br><br>
       <button class="btn btn-success" (click)="onGetTwo()">Get Servers (subscribe in service)</button>
-      <hr>
+      <br><br>
+      <button class="btn btn-success" (click)="onGetThree()">Get Servers (change data received)</button>
+    </div>
+    <div class="col-xs-6">
       <ul class="list-group" *ngFor="let server of servers">
         <li class="list-group-item">{{ server.name }} (ID: {{ server.id }})</li>
       </ul>
